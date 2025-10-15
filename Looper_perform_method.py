@@ -1,3 +1,4 @@
+#This version of perform takes in a value for repeats, defaulted to 1.
 def perform(self, phrase: Phrase, gestures: Optional[Phrase], tempo=None, wait_for_measure_end=False, repeats: int = 1):
         phrase = self.filter_phrase(phrase, min_note_dist_ms=self.min_note_dist_ms,
                                     max_notes_per_onset=self.max_notes_per_onset)
@@ -10,6 +11,7 @@ def perform(self, phrase: Phrase, gestures: Optional[Phrase], tempo=None, wait_f
         if gestures is not None:
             self.perform_gestures(gestures=gestures, tempo=tempo, wait_for_measure_end=wait_for_measure_end)
 
+        #loops the performance a number of times determined by the repeats argument
         for loop_idx in range(repeats):
             i = 0
             while i < len(notes):
